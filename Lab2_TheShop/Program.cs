@@ -1,10 +1,23 @@
-﻿namespace Lab2_TheShop
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Lab2_TheShop
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+
+            Console.WriteLine("Opening catalog: ");
+
+            Console.WriteLine();
+            Console.WriteLine("Loading five records: ");
+
+
+
         }
     }
 }
+
+    
+
+
