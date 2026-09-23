@@ -13,10 +13,10 @@ namespace Lab2_TheShop
         private List<StockMovement> history;
         private int nextSeq;
 
-        public string Sku { get; }
-        public string Name { get; }
-        public decimal UnitPrice { get; }
-        public int QuantityOnHand { get; set; }
+        public string Sku { get{ return sku; } }
+        public string Name { get { return name; } }
+        public decimal UnitPrice { get { return unitPrice; } }
+        public int QuantityOnHand { get { return quantityOnHand; } set { quantityOnHand = value; } }
         internal List<StockMovement> History { get; } = new List<StockMovement>();
 
 
@@ -25,10 +25,10 @@ namespace Lab2_TheShop
 
 
 
-            this.sku = Sku;
-            this.name = Name;
-            this.unitPrice = UnitPrice;
-            this.quantityOnHand = QuantityOnHand;
+            this.sku = sku;
+            this.name = name;
+            this.unitPrice = unitPrice <0? 0: unitPrice;
+            this.quantityOnHand = quantityOnHand < 0? 0: quantityOnHand;
 
             if (unitPrice < 0)
             {
@@ -38,8 +38,8 @@ namespace Lab2_TheShop
             {
                 quantityOnHand = 0;
             }
-            this.history =History ?? new List<StockMovement>();
-            this.nextSeq = nextSeq++;
+            this.history = new List<StockMovement>();
+            this.nextSeq = 0;
         }
         public abstract string Category();
         public abstract decimal HandlingFee();
@@ -67,7 +67,7 @@ namespace Lab2_TheShop
             {
                 return false;
             }
-            quantityOnHand -= count;
+            QuantityOnHand -= count;
             history.Add(new StockMovement(nextSeq++, "Released", count));
             return true;
         }

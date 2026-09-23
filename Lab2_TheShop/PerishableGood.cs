@@ -7,14 +7,14 @@ namespace Lab2_TheShop
     public class PerishableGood : PhysicalGood, IDiscountable
     {
         private int shelfLifeDays;
-        public int ShelfLifeDays { get; }
+        public int ShelfLifeDays { get { return shelfLifeDays; } }
         public const decimal SurchargeFee = 0.40m;
 
 
         public PerishableGood(string sku, string name, decimal unitPrice, int quantityOnHand, int shelfLifeDays)
             : base(sku, name, unitPrice, quantityOnHand)
         {
-            this.shelfLifeDays = ShelfLifeDays;
+            this.shelfLifeDays = shelfLifeDays;
         }
         public override string Category()
         {

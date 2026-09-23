@@ -7,15 +7,23 @@ namespace Lab2_TheShop
 {
     public class Shop : IReportable
     {
-        private string name;
         private List<StockItem> items;
 
-        public string Name { get; }
-        public int Count { get; }
+        public string Name { get; private set; }
+        public int Count { get { return items?.Count ?? 0; } }
 
         public Shop(string name)
         {
-            this.name = Name;
+            this.Name = name;
+            this.items = new List<StockItem>();
+        }
+        public StockItem Find(string sku)
+        {
+            return items.Find(x => x.Sku == sku);
+            if (sku == null)
+            {
+                return null;
+            }
         }
         public bool Add(StockItem item)
         {
@@ -29,16 +37,6 @@ namespace Lab2_TheShop
             }
             items.Add(item);
             return true;
-        }
-        public StockItem Find(string sku)
-        {
-            return items.Find(x => x.Sku == sku);
-            if (sku == null)
-            {
-                return null;
-            }     
-            
-
         }
         public decimal TotalValue()
         {

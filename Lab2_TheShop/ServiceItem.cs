@@ -8,12 +8,12 @@ namespace Lab2_TheShop
     {
         private double laborHours;
 
-        public double LaborHours { get; }
+        public double LaborHours { get { return laborHours; } }
 
         public ServiceItem(string sku, string name, decimal unitPrice, int quantityOnHand, double laborHours)
             : base(sku, name, unitPrice, quantityOnHand)
         {
-            this.laborHours = LaborHours;
+            this.laborHours = laborHours;
         }
 
         public override string Category()
