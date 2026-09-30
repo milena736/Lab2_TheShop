@@ -19,7 +19,7 @@ namespace Lab2_TheShop
         }
         public StockItem Find(string sku)
         {
-            return items.Find(x => x.Sku == sku);
+            return items.Find(x => x.sku == sku);
             if (sku == null)
             {
                 return null;
@@ -31,7 +31,7 @@ namespace Lab2_TheShop
             {
                 return false;
             }
-            if (items.Find(x => x.Sku == item.Sku) != null)
+            if (items.Find(x => x.sku == item.sku) != null)
             {
                 return false;
             }
@@ -47,14 +47,14 @@ namespace Lab2_TheShop
             }
             return total;
         }
-        public decimal SaleVaule()
+        public decimal SaleValue()
         {
             decimal total = 0;
             foreach (var item in items)
             {
                 if (item is IDiscountable discountableItem && discountableItem.IsOnSale)
                 {
-                    total += (discountableItem.SalePrice() + item.HandlingFee()) * item.QuantityOnHand;
+                    total += (discountableItem.SalePrice() + item.HandlingFee()) * item.quantityOnHand;
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace Lab2_TheShop
             int count = items.Count(item => item is IDiscountable discountableItem && discountableItem.IsOnSale);
             return count;
         }
-        public void SortBuValue()
+        public void SortByValue()
         {
             for (int i = 0; i < items.Count - 1; i++)
             {
@@ -94,10 +94,11 @@ namespace Lab2_TheShop
         {
             if  (a.ExtendedValue() != b.ExtendedValue());
                  return a.ExtendedValue() > b.ExtendedValue();
-            return string.Compare(a.Name, b.Name, StringComparison.Ordinal) < 0;
+            return string.Compare(a.name, b.name, StringComparison.Ordinal) < 0;
         }
         string IReportable.ReportLine()
         {
+            
             return String.Format("{0}: {1} items, ${2:N2} on hand", Name, Count, TotalValue());
         }
         public void PrintReport()
@@ -105,13 +106,14 @@ namespace Lab2_TheShop
             Console.WriteLine(new string('=', 60));
             Console.WriteLine("  RIVER CITY SUPPLY : REPORT");
             Console.WriteLine(new string('=', 60));
-            Console.WriteLine(" {0,-7} {1,-21} {2,-10} {3,4} {4,11}", "SKU, ITEM,CATEGORY, QTY, VALUE");
+            Console.WriteLine(" {0,-7} {1,-21} {2,-10} {3,4} {4,11}", "SKU", "ITEM","CATEGORY"," QTY", "VALUE");
             Console.WriteLine(new string('-', 60));
+            //I'm not sure how to use report line on stockitems 
             Console.WriteLine(((IReportable)this).ReportLine());
             Console.WriteLine(new string('-', 60));
-            Console.WriteLine(" {0,-46} {1,11}","Records on file: " + Count);
-            Console.WriteLine(" {0,-46}${1,11:N2}","Total value on hand: " + TotalValue());
-            Console.WriteLine(" {0,-46}${1,11:N2}","Value if every sale price were taken: " + SaleVaule());
+            Console.WriteLine(" {0,-46} {1,11}", "Records on file:",Count);
+            Console.WriteLine(" {0,-46}${1,11:N2}","Total value on hand: ", TotalValue());
+            Console.WriteLine(" {0,-46}${1,11:N2}","Value if every sale price were taken: " , SaleValue());
             Console.WriteLine(new string('=', 60));
         }
     }

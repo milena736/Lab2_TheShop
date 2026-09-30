@@ -9,12 +9,14 @@ namespace Lab2_TheShop
         private int shelfLifeDays;
         public int ShelfLifeDays { get { return shelfLifeDays; } }
         public const decimal SurchargeFee = 0.40m;
+       
 
 
-        public PerishableGood(string sku, string name, decimal unitPrice, int quantityOnHand, int shelfLifeDays)
-            : base(sku, name, unitPrice, quantityOnHand)
+        public PerishableGood(string sku, string name, decimal unitPrice, int quantityOnHand, double weightPounds, int shelfLifeDays)
+            : base(sku, name, unitPrice, quantityOnHand,weightPounds)
         {
             this.shelfLifeDays = shelfLifeDays;
+            
         }
         public override string Category()
         {

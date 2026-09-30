@@ -6,23 +6,12 @@ namespace Lab2_TheShop
 {
     public class DurableGood : PhysicalGood
     {
-        private int warrantymonths;
-        public int WarrantyMonths { get { return WarrantyMonths; } private set { WarrantyMonths = value; } }
-
-        // Public constructor matching the usage in Program.cs (sku, name, unitPrice, quantityOnHand, warrantyMonths)
-        public DurableGood(string sku, string name, decimal unitPrice, int quantityOnHand, int warrantyMonths)
-            : base(sku, name, unitPrice, quantityOnHand)
-        {
-            this.warrantymonths = warrantyMonths;
-            this.WarrantyMonths = warrantyMonths;
-        }
-
-        // Existing protected constructor (kept for compatibility) corrected
-        protected DurableGood(string sku, string name, decimal unitPrice, int quantityOnHand, double weightPounds, int warrantyMonths)
-            : base(sku, name, unitPrice, quantityOnHand)
-        {
-            this.warrantymonths = warrantyMonths;
-            this.WarrantyMonths = warrantyMonths;
+        private int warrantyMonths;
+        public int WarrantyMonths { get { return warrantyMonths; } private set { warrantyMonths = value; }  }
+        public DurableGood(string sku, string name, decimal unitPrice, int quantityOnHand, double weightPounds, int warrantyMonths)
+            : base(sku, name, unitPrice, quantityOnHand, weightPounds)
+        { 
+            this.warrantyMonths = warrantyMonths;
         }
 
         public override string Category()
@@ -35,7 +24,7 @@ namespace Lab2_TheShop
         }
         public override string Describe()
         {
-            return base.Describe() + string.Format(", {0} month warranty", warrantymonths);
+            return base.Describe() + string.Format(", {0} month warranty", WarrantyMonths);
         }
     }
 }
