@@ -80,15 +80,6 @@ namespace Lab2_TheShop
                 Console.WriteLine(item3.MovementLines());
             }
 
-
-
-
-
-
-
-
-            //StockItem kettle = manager.Find("KTL11");
-            //Console.WriteLine(kettle.Describe());
            
             
            
