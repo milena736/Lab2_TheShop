@@ -8,22 +8,24 @@ namespace Lab2_TheShop
     {
         public int Compare(ShelfCount a, ShelfCount b)
         {
-           
-            double valueA = a.valueOnHand;
-            double valueB = b.valueOnHand;
-            if (valueA > valueB)
+            if (b == null)
             {
                 return -1;
             }
-            else if (valueA < valueB)
+            if (a == null)
             {
                 return 1;
             }
-            if (valueA == valueB)
+            if (a == null && b == null)
             {
-                return valueA.CompareTo(valueB);
+                return 0;
             }
-           
+            if (a.valueOnHand != b.valueOnHand)
+            {
+                return b.valueOnHand.CompareTo(a.valueOnHand);
+            }
+            return a.CompareTo(b);
+
         }
     }
 }

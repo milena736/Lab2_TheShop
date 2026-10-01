@@ -93,14 +93,62 @@ namespace Lab2_TheShop
             ShelfCount record6 = new ShelfCount("FROZEN", 2, 30.0);
             ShelfCount record7 = new ShelfCount("DRY", 4, 12.5);
 
+            shelfCounts.Add(record1);
+            shelfCounts.Add(record2);
+            shelfCounts.Add(record3);
+            shelfCounts.Add(record4);
+            shelfCounts.Add(record5);
+            shelfCounts.Add(record6);
+            shelfCounts.Add(record7);
+
             Console.WriteLine("Seven records created, in this order:");
-            for (int i = 0; i < 7; i++)
+            int recordNumber = 1;
+            foreach (var record in shelfCounts)
             {
-                int recordNumber = i + 1;
-                Console.WriteLine(String.Format(" {0,2}: {1}", recordNumber, shelfCounts[i]));
+                Console.WriteLine(String.Format(" {0,2}: {1}", recordNumber++, record));
+
             }
             Console.WriteLine();
             Console.WriteLine("Contract 1: Equals and GetHashCode");
+
+            var set = new HashSet<ShelfCount>();
+            set.Add(record1);
+            set.Add(record2);
+            set.Add(record3);
+            set.Add(record4);
+            set.Add(record5);
+            set.Add(record6);
+            set.Add(record7);
+
+            var ShelfList = new List<ShelfCount>(set);
+
+            string label1 = "Record 1 equals Record 5 (same key, new value)? ";
+            bool value1 = shelfCounts[0].Equals(shelfCounts[4]);
+            string label2 = "Record 2 equals Record 4 (identical)? ";
+            bool value2 = shelfCounts[1].Equals(shelfCounts[3]);
+            string label3 = "Record 1 equals Record 3? ";
+            bool value3 = shelfCounts[0].Equals(shelfCounts[2]);
+            string label4 = "Record 2 and record 4 are the same object? ";
+            bool value4 = ReferenceEquals(shelfCounts[1], shelfCounts[3]);
+            string label5 = "Equal records report equal hash codes? ";
+            bool value5 = shelfCounts[0].GetHashCode() == shelfCounts[4].GetHashCode();
+            string label6 = "Records created: ";
+            int value6 = shelfCounts.Count;
+            string label7 = "Distinct records in HashSet: ";
+            int value7 = new HashSet<ShelfCount>(shelfCounts).Count;
+            
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label1, value1));
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label2, value2));
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label3, value3));
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label4, value4));
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label5, value5));
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label6, value6));
+            Console.WriteLine(String.Format(" {0, -50}{1,6}", label7, value7));
+
+
+
+
+
 
 
 

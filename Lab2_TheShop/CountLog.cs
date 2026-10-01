@@ -23,8 +23,8 @@ namespace Lab2_TheShop
             count = 0;
             isClosed = false;
         }
-        //I got an error that ShelfCount was less accessible than Write so I changed it from public to internal
-        internal void Write(ShelfCount r)
+        
+        public void Write(ShelfCount r)
         {
             count = count + 1;
             Console.WriteLine("{0,3} {1}", count, r);

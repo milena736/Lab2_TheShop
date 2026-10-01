@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Lab2_TheShop
 {
-    internal class ShelfCount : IEquatable<ShelfCount>, IComparable<ShelfCount>
+    public class ShelfCount : IEquatable<ShelfCount>, IComparable<ShelfCount>
     {
 
-        public string aisle { get; set; }
-        public int slot { get; set; }
-        public double valueOnHand { get; set; }
+        public string aisle { get; }
+        public int slot { get; }
+        public double valueOnHand { get; }
 
         public ShelfCount(string aisle, int slot, double valueOnHand)
         {
