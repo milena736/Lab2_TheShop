@@ -156,21 +156,28 @@ namespace Lab2_TheShop
             {
                 Console.WriteLine("  " + record);
             }
+            Console.WriteLine();
+
+            Console.WriteLine("Contract 3: a comparer, chosen at the call site");
+            ShelfList.Sort(new HighestValueFirst());
+            Console.WriteLine("  HighestValueFirst");
+            foreach (var record in ShelfList)
+            {
+                Console.WriteLine("    " + record);
+            }
             
-
-            
-
-
-
-
-
-
-
+            ShelfList.Sort(new GroupedByKey());
+            Console.WriteLine("  GroupedByKey");
+            foreach (var record in ShelfList)
+            {
+                Console.WriteLine("    " + record);
+            }
+            Console.WriteLine();
 
 
 
 
-        }  
+        } 
 
     }
 }
