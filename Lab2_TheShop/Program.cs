@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Lab2_TheShop
@@ -174,8 +175,41 @@ namespace Lab2_TheShop
             }
             Console.WriteLine();
 
+            Console.WriteLine("Contract 4: cleanup that runs even when the code throws");
+            ShelfList.Sort(new HighestValueFirst());
+            CountLog log = null;
+            try
+            {
+                using (log = new CountLog("count-log.txt"))
+                {
+                    for (int i = 0; i < 3; i++)
+                        log.Write(ShelfList[i]);
+                    throw new InvalidOperationException("scanner fault after 3 writes");
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(" Caught: " + ex.Message);
+            }
+            bool safeTwice = true;
+            try { log.Dispose(); }
+            catch
+            {
+                safeTwice = false;
+            }
 
+            string labelA = "The log closed itself? ";
+            bool valueA = log.IsClosed;
+            string labelB = "Closing it a second time was safe?";
+            bool valueB = safeTwice;
+            string labelC = "Lines the log wrote before fault: ";
+            int valueC = log.Count;
+            Console.WriteLine(String.Format(" {0,-50}{1,6}", labelA, valueA));
+            Console.WriteLine(String.Format(" {0,-50}{1,6}", labelB, valueB));
+            Console.WriteLine(String.Format(" {0,-50}{1,6}", labelC, valueC));
+            Console.WriteLine(" count-log.txt now says: ");
 
+            
 
         } 
 
