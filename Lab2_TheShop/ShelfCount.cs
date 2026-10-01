@@ -7,15 +7,15 @@ namespace Lab2_TheShop
     internal class ShelfCount : IEquatable<ShelfCount>, IComparable<ShelfCount>
     {
 
-        public string Aisle { get; private set; }
-        public int Slot { get; private set; }
-        public double ValueOnHand { get; private set; }
+        public string aisle { get; set; }
+        public int slot { get; set; }
+        public double valueOnHand { get; set; }
 
         public ShelfCount(string aisle, int slot, double valueOnHand)
         {
-            Aisle = aisle;
-            Slot = slot;
-            ValueOnHand = valueOnHand;
+            this.aisle = aisle;
+            this.slot = slot;
+            this.valueOnHand = valueOnHand;
         }
         public bool Equals(ShelfCount other)
         {
@@ -23,7 +23,7 @@ namespace Lab2_TheShop
             {
                 return false;
             }
-            return this.Aisle == other.Aisle && this.Slot == other.Slot;
+            return this.aisle == other.aisle && this.slot == other.slot;
         }
         public override bool Equals(object obj)
         {
@@ -32,7 +32,7 @@ namespace Lab2_TheShop
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(Aisle, Slot);
+            return HashCode.Combine(aisle, slot);
         }
         public int CompareTo(ShelfCount other)
         {
@@ -40,16 +40,16 @@ namespace Lab2_TheShop
             {
                 return 1;
             }
-            int aisleComparison = this.Aisle.CompareTo(other.Aisle);
+            int aisleComparison = this.aisle.CompareTo(other.aisle);
             if (aisleComparison != 0)
             {
                 return aisleComparison;
             }
-            return this.Slot.CompareTo(other.Slot);
+            return this.slot.CompareTo(other.slot);
         }
         public override string ToString()
         {
-            return String.Format("{0,-6} #{1} {2,8:N2}", Aisle, Slot, ValueOnHand);
+            return String.Format("{0,-6} #{1} {2,8:N2}", aisle, slot, valueOnHand);
         }
 
     }

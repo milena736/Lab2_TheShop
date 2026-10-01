@@ -80,9 +80,31 @@ namespace Lab2_TheShop
                 Console.WriteLine(item3.MovementLines());
             }
 
-           
-            
-           
+            //Start of Built in Interface Lab3
+
+            Console.WriteLine("=== RIVER CITY SUPPLY ===");
+            Console.WriteLine();
+            List<ShelfCount> shelfCounts = new List<ShelfCount>();
+            ShelfCount record1 = new ShelfCount( "DAIRY", 3, 21.5 );
+            ShelfCount record2 = new ShelfCount("DRY", 1, 19.0);
+            ShelfCount record3 = new ShelfCount("DAIRY", 1, 15.0);
+            ShelfCount record4 = new ShelfCount("DRY", 1, 19.0);
+            ShelfCount record5 = new ShelfCount("DAIRY", 3, 18.75);
+            ShelfCount record6 = new ShelfCount("FROZEN", 2, 30.0);
+            ShelfCount record7 = new ShelfCount("DRY", 4, 12.5);
+
+            Console.WriteLine("Seven records created, in this order:");
+            for (int i = 0; i < 7; i++)
+            {
+                int recordNumber = i + 1;
+                Console.WriteLine(String.Format(" {0,2}: {1}", recordNumber, shelfCounts[i]));
+            }
+            Console.WriteLine();
+            Console.WriteLine("Contract 1: Equals and GetHashCode");
+
+
+
+
 
 
 
